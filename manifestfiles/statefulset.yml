@@ -26,15 +26,15 @@ spec:
             name: bankapp-secret
         resources:
           requests:
-            cpu: "100"
-            memory: "250Gi"
+            cpu: "100m"
+            memory: "150Mi"
           limits:
             cpu: "500"
-            memory: "500Gi"
+            memory: "500Mi"
         volumeMounts:
         - name: bankapp-storage
           mountPath: /usr/share/nginx/html
-  volumeClaimTemplates::
+  volumeClaimTemplates:
   - metadata:
       name: bankapp-storage
     spec:
