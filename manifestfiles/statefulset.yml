@@ -1,61 +1,45 @@
 apiVersion: apps/v1
 kind: StatefulSet
-
 metadata:
   name: bankapp-statefulset
   namespace: default
-
 spec:
   replicas: 3
-
   selector:
     matchLabels:
       app: dbbankapp
-
   serviceName: mysqldb
-
   template:
     metadata:
       labels:
         app: dbbankapp
-
     spec:
       containers:
         - name: bankapp-container
-
           image: poornapj/blookbankapp:database
-
           ports:
             - containerPort: 80
-
           envFrom:
             - configMapRef:
                 name: bankapp-config
-
             - secretRef:
                 name: bankapp-secret
-
           resources:
             requests:
               cpu: "100m"
               memory: "150Mi"
-
             limits:
               cpu: "500m"
               memory: "500Mi"
-
           volumeMounts:
             - name: bankapp-storage
               mountPath: /usr/share/nginx/html
-
   volumeClaimTemplates:
     - metadata:
         name: bankapp-storage
-
       spec:
         accessModes:
           - ReadWriteOnce
-
         resources:
           requests:
             storage: 1Gi
