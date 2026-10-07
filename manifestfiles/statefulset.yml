@@ -34,7 +34,7 @@ spec:
         volumeMounts:
         - name: bankapp-storage
           mountPath: /usr/share/nginx/html
-  volumeclaimtemplate:
+  volumeClaimTemplates::
   - metadata:
       name: bankapp-storage
     spec:
