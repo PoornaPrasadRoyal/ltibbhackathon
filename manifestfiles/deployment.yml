@@ -23,11 +23,11 @@ spec:
             name: bankapp-config
         resources:
           requests:
-            cpu: "100"
-            memory: "250Gi"
+            cpu: "100m"
+            memory: "150Mi"
           limits:
             cpu: "500"
-            memory: "500Gi"
+            memory: "500Mi"
         livenessProbe:
           httpGet: 
            path: /
